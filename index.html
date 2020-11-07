@@ -3,28 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='./styles.css'>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Teko:wght@500;700&display=swap" rel="stylesheet">
   <title>TicTacToe</title>
 </head>
 <body>
-  <div id='winner'></div>
-  <table id='board'>
-    <tr>
-      <td id='0-0' style="font-size: 30px">_</td>
-      <td id='0-1' style="font-size: 30px">_</td>
-      <td id='0-2' style="font-size: 30px">_</td>
-    </tr>
-    <tr>
-      <td id='1-0' style="font-size: 30px">_</td>
-      <td id='1-1' style="font-size: 30px">_</td>
-      <td id='1-2' style="font-size: 30px">_</td>
-    </tr>
-    <tr>
-      <td id='2-0' style="font-size: 30px">_</td>
-      <td id='2-1' style="font-size: 30px">_</td>
-      <td id='2-2' style="font-size: 30px">_</td>
-    </tr>
-  </table>
-  <button id='reset'>Reset Board</button>
+  <div id='game'>
+    <h1> Tic Tac Toe </h1>
+    <table id='board'>
+      <tr>
+        <td id='0-0'>_</td>
+        <td id='0-1'>_</td>
+        <td id='0-2'>_</td>
+      </tr>
+      <tr>
+        <td id='1-0'>_</td>
+        <td id='1-1'>_</td>
+        <td id='1-2'>_</td>
+      </tr>
+      <tr>
+        <td id='2-0'>_</td>
+        <td id='2-1'>_</td>
+        <td id='2-2'>_</td>
+      </tr>
+    </table>
+    <section id='tally'>
+      <div id='xWins'>X wins: </div>
+      <div id ='oWins'>O wins: </div>
+    </section>
+    </br>
+    <div id='reset'> New Game </div>
+  </div>
+  <section id='winner'></section>
   <script src="./app.js"></script>
 </body>
 </html>

@@ -1,0 +1,106 @@
+
+
+html {
+  box-sizing: border-box;
+  font-size: 20px;
+  font-family: 'Architects Daughter', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 600px;
+  height: 600px;
+  margin: 0 auto 100px auto;
+}
+
+#tally {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 45px;
+}
+
+#winner {
+  margin: 0 auto;
+  width: 600px;
+  height: 50px;
+  text-align: center;
+}
+
+#board {
+  background-color: bisque;
+  border: 5px solid royalblue;
+  margin-bottom: 20px;
+}
+
+td {
+  border: 5px solid royalblue;
+  text-align: center;
+  width: 4rem;
+  height: 4rem;
+  font-size: 3.5em;
+}
+
+#tally div{
+  font-size: 1.5em;
+}
+
+/* #reset,
+#reset:link,
+#reset:visited {
+  font-size: 1.2em;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: royalblue;
+  color: bisque;
+}
+
+#reset:active,
+#reset:hover {
+
+} */
+
+#reset {
+  font-size: 1.2em;
+  background: royalblue;
+  color: bisque;
+  border: 4px solid royalblue;
+  border-radius: 5px;
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+#reset:hover {
+  color: royalblue;
+}
+#reset::after {
+  content: "";
+  background: bisque;
+  position: absolute;
+  z-index: -1;
+  display: block;
+  transition: all 0.35s;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  right: 100%;
+}
+
+#reset:hover::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: all 0.35s;
+}

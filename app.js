@@ -4,6 +4,9 @@
 class Board {
   constructor() {
     this.isX = true;
+    this.plays = 0;
+    this.xWins = 0;
+    this.oWins = 0;
     this.board = [
       [' ',' ',' '],
       [' ',' ',' '],
@@ -12,6 +15,7 @@ class Board {
   }
 
   addMove(coords) {
+    this.plays++;
     var row = coords[0];
     var col = coords[1];
     this.isX ? this.board[row][col] = 'X' : this.board[row][col] = 'O';
@@ -21,7 +25,14 @@ class Board {
     var row = coords[0];
     var col = coords[1];
     var player = this.isX ? 'X' : 'O';
-    // Check Row and Column
+
+    if (this.hasRowOrCol(row, col, player) || this.hasDiagonal(row, col, player)) {
+      return true;
+    }
+    return false;
+  }
+
+  hasRowOrCol(row, col, player) {
     var hasRow = true;
     var hasCol = true;
     for (var i = 0; i < 3; i++) {
@@ -36,8 +47,9 @@ class Board {
       this.isX = player === 'X' ? true : false;
       return true;
     }
+  }
 
-    // Check Major and Minor Diagonal
+  hasDiagonal(row, col, player) {
     var diagCount = 0;
     if (row === col) {
       for (var i = 0; i < 3; i++) {
@@ -60,6 +72,7 @@ class Board {
   }
 
   reset() {
+    this.plays = 0;
     this.board = [
       [' ',' ',' '],
       [' ',' ',' '],
@@ -74,8 +87,10 @@ var table = document.getElementById('board');
 var squares = document.querySelectorAll('td')
 var resetBtn = document.getElementById('reset');
 var winCont = document.getElementById('winner');
-var winMsg = document.createElement('h1');
+var winMsg = document.createElement('h2');
 var board = new Board();
+var xWinsCont = document.getElementById('xWins');
+var oWinsCont = document.getElementById('oWins');
 
 table.addEventListener('click', (e) => {
   // Updates board data
@@ -87,8 +102,19 @@ table.addEventListener('click', (e) => {
     board.isX ? e.target.textContent = 'X' : e.target.textContent = 'O';
   }
   if (board.hasWon(coords)) {
-    var winner = board.isX ? 'X' : '0';
-    winMsg.textContent = `Winner is: ${winner}!!!`;
+    if (board.isX) {
+      board.xWins++;
+      winMsg.textContent = `Winner is: X ! ! !`;
+      xWinsCont.textContent = `X wins: ${board.xWins}`
+    } else {
+      board.oWins++;
+      winMsg.textContent = `Winner is: O ! ! !`;
+      oWinsCont.textContent = `O wins: ${board.oWins}`
+
+    }
+    winCont.append(winMsg);
+  } else if (board.plays === 9) {
+    winMsg.textContent = 'It\'s a tie ! ! !';
     winCont.append(winMsg);
   } else {
     board.isX = !board.isX;
